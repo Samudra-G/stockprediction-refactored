@@ -1,0 +1,31 @@
+services:
+  backend-go:
+    build: ./backend-go
+    ports:
+      - "8080:8080"
+    networks:
+      - mynet
+
+  ml-fastapi:
+    build: ./ml_fastapi
+    ports:
+      - "8000:8000"
+    networks:
+      - mynet
+    volumes:
+      - ./ml_fastapi:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend-go
+      - ml-fastapi
+    networks:
+      - mynet
+
+networks:
+  mynet:

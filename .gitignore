@@ -1,0 +1,36 @@
+# Byte-compiled / cache
+__pycache__/
+*/__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+*.env
+.env.*
+
+# Logs
+*.log
+
+# Docker (optional extra)
+*.pid
+
+# Model artifacts
+*.h5
+*.pkl
+*.keras
+*.ckpt
+
+# Jupyter Notebook checkpoints 
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code 
+.vscode/
+.idea/
+
+# Python virtual environments
+venv/
+.env/

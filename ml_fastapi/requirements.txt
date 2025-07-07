@@ -1,0 +1,9 @@
+tensorflow-cpu==2.17.0
+scikit-learn
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+pandas
+numpy
+python-multipart
