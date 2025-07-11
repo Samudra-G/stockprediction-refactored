@@ -5,9 +5,13 @@ import (
 
 	"github.com/Samudra-G/stockprediction-refactored/api"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	_ = godotenv.Load()
+
 	h := api.NewHandler()
 
 	router := gin.Default()
