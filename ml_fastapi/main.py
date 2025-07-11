@@ -6,13 +6,13 @@ import os
 
 load_dotenv()
 
-#origins = os.getenv("CLIENT_URL", "*").split(",")
+origins = os.getenv("GO_BACKEND", "*").split(",")
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Replace with frontend/client URL 
+    allow_origins=origins, # Replace with backend URL 
     allow_credentials=True,
     allow_methods=["*"],  
     allow_headers=["*"],  

@@ -2,10 +2,15 @@ import pandas as pd
 import numpy as np
 import requests
 import yfinance as yf
+import os
 from io import StringIO
+from dotenv import load_dotenv
 
-BACKEND_GO_URL = "http://backend-go:8080"
-ML_FASTAPI_URL = "http://ml-fastapi:8000"
+load_dotenv()
+
+BACKEND_GO_URL = os.getenv("GO_BACKEND")
+if not BACKEND_GO_URL:
+    raise ValueError("GO_BACKEND environment variable is not set.")
 
 def fetch_stock_data(ticker: str) -> pd.DataFrame | None:
     try:

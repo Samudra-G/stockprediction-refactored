@@ -4,3 +4,4 @@ pandas
 numpy
 yfinance
 plotly
+python-dotenv

@@ -8,6 +8,7 @@ import (
 	"log"
 	"mime/multipart"
 	"net/http"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -166,7 +167,16 @@ func (h *Handler) Metric(c *gin.Context) {
 
 			writer.Close()
 
-			req, err := http.NewRequest("POST", "http://ml-fastapi:8000/api/v1/predict", bodyBuf)
+			mlBackendURL := os.Getenv("ML_BACKEND")
+			if mlBackendURL == "" {
+				log.Println("ML_BACKEND environment variable is not set")
+				stateLock.Lock()
+				predictionState.Status = "failed"
+				stateLock.Unlock()
+				return
+			}
+
+			req, err := http.NewRequest("POST", mlBackendURL+"/api/v1/predict", bodyBuf)
 			if err != nil {
 				log.Println("Failed to create FastAPI request:", err)
 				stateLock.Lock()
