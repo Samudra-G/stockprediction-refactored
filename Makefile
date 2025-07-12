@@ -27,4 +27,7 @@ local-server:
 test-backend:
 	cd backend-go && go test -v -cover ./...
 
-.PHONY: up down logs build-backend build-ml build-frontend local-server test-backend
+test-ml:
+	docker-compose exec ml-fastapi pytest -v --maxfail=1
+
+.PHONY: up down logs build-backend build-ml build-frontend local-server test-backend test-ml

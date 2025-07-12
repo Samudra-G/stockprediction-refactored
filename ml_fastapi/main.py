@@ -19,3 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(api_router, prefix="/api/v1")
+
+@app.get("/health")
+def health():
+    return {"message": "FastAPI backend running"}
