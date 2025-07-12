@@ -89,7 +89,7 @@ func (h *Handler) Metric(c *gin.Context) {
 	}
 	if closeIdx == -1 {
 		log.Println(`"Close" column not found in CSV headers`, headers)
-		c.JSON(http.StatusBadRequest, gin.H{"error": `"Close" column not found`})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Close column not found"})
 		return
 	}
 
