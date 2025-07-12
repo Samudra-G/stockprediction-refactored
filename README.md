@@ -6,10 +6,10 @@ This project is a **containerized, microservice-based stock price prediction sys
 
 ## 🚀 Features
 
-* **LSTM Model**: Predicts future stock closing prices based on uploaded CSV data.
+* **LSTM Model**: Predicts future stock closing prices automatically.
 * **FastAPI Service**: Serves the trained model, handles data preprocessing, and returns predictions.
 * **Go Backend**: Orchestrates requests, handles metric logging, and manages polling.
-* **Streamlit Frontend**: Displays results interactively with clear, responsive visualizations (Plotly).
+* **Streamlit Frontend**: User only needs to select a stock ticker — no CSV upload required!
 * **Asynchronous Polling**: Go polls FastAPI in the background so the UI remains responsive.
 * **Fully Dockerized**: Each component runs in its own container.
 
@@ -25,23 +25,13 @@ This project is a **containerized, microservice-based stock price prediction sys
 
 ---
 
-⚙️ What’s inside?
+## ⚙️ What’s inside?
 
-* ml_fastapi/ — FastAPI service for heavy LSTM predictions (TensorFlow).
-
-* backend-go/ — Go service handling metrics & concurrency.
-
-* frontend/ — Streamlit UI that polls the backend & shows results.
-
+* ml\_fastapi/ — FastAPI service for LSTM predictions.
+* backend-go/ — Go service handling metrics & async requests.
+* frontend/ — Streamlit UI for users to pick tickers and view results.
 * docker-compose.yml — Orchestrates everything.
-
-* Makefile — Run your stack with simple commands like:
-
-* make up — Start all services.
-
-* make down — Stop all services.
-
-* make restart — Restart everything.
+* Makefile — Run your stack with simple commands like `make up`.
 
 ---
 
@@ -52,74 +42,47 @@ This project is a **containerized, microservice-based stock price prediction sys
 ├── Makefile
 ├── docker-compose.yml
 ├── backend-go/
-│   ├── cmd/
-│   ├── api/
-│   ├── pkg/
-│   └── utils/
 ├── ml_fastapi/
-│   ├── api/v1/
-│   ├── model/
-│   ├── services/
-│   ├── requirements.txt
-│   └── main.py
+│   ├── model/   # Place your downloaded .keras model here!
 ├── frontend/
-│   ├── main.py
-│   ├── plots.py
-│   ├── utils.py
-│   ├── requirements.txt
 └── LICENSE
-
 ```
 
 ---
 
 ## ✅ How It Works
 
-1. **Put Stock Ticker** — Streamlit lets the user select a stock ticker.
-2. **Go Backend Calls FastAPI** — The Go service computes metrics and forwards the data to FastAPI.
-3. **FastAPI Predicts** — Loads the LSTM, preprocesses data, returns predictions.
-4. **Polling** — Go polls FastAPI status while Streamlit shows a spinner.
-5. **Results Rendered** — Streamlit displays predictions vs. actuals interactively with Plotly.
+1. **Pick Stock Ticker** — The Streamlit app lets the user select a stock.
+2. **Go Backend Calls FastAPI** — The Go service prepares metrics and forwards the ticker to FastAPI.
+3. **FastAPI Predicts** — Loads the LSTM, fetches historical data, returns predictions.
+4. **Polling** — Go polls FastAPI while Streamlit shows progress.
+5. **Results Rendered** — Streamlit displays predictions vs. actuals with interactive Plotly charts.
 
 ---
 
 ## 🚢 Deployment
 
-This project runs **entirely in Docker containers**. Example commands:
+Runs fully in Docker. Example:
 
 ```bash
 make up
 ```
 
-All secrets (DB, keys, endpoints) are managed via `.env` and injected with Docker Compose.
-
----
-
-## 🗂️ Environment & Secrets
-
-Your `.gitignore` excludes:
-
-* Python caches
-* `.env` with secrets
-* Large models
-
-Be sure to keep your `.env` and model files secure.
+Just make sure to place the shared [model file](https://drive.google.com/file/d/1LSpZ__JbnbioPlqMHCfirp37NvJT3ld4/view?usp=sharing) in `ml_fastapi/model/` before starting.
 
 ---
 
 ## 📊 Future Improvements
 
 * Add database support for multi-user jobs.
-* Add more metrics and logging.
-* Include unit tests.
-* Deploy with CI/CD.
+* Add more advanced metrics and logs.
+* Expand tests.
+* Automate with CI/CD.
 
 ---
 
 ## 🏆 Credits
 
-Built with ❤️ by \Samudra-G.
+Built with ❤️ by Samudra-G.
 
----
-
-**MIT License** — use, modify, and learn freely!
+**MIT License** — use, modify, and learn freely! Just don't forget to credit me!
