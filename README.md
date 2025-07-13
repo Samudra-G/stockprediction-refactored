@@ -81,6 +81,16 @@ Just make sure to place the shared [model file](https://drive.google.com/file/d/
 
 ---
 
+## 📺 Live Demo
+
+🚀 [**Try it live → Click here!**](https://stocksamudra.onrender.com)
+
+Predict stock prices in real time — pick a ticker, run the LSTM model, and see interactive Plotly charts comparing predictions vs. actuals.
+
+[![Live Demo](https://img.shields.io/badge/Live%20App-Open%20Now-brightgreen?style=for-the-badge&logo=render)](https://stocksamudra.onrender.com)
+
+---
+
 ## 🏆 Credits
 
 Built with ❤️ by Samudra-G.

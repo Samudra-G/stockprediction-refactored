@@ -19,15 +19,20 @@ def plot_moving_averages(metrics):
         fig.add_trace(go.Scatter(x=x_vals, y=ma200, mode='lines', line=dict(color='orange'), name='MA200'))
 
         fig.update_layout(
+            autosize=True,
+            width=None,
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20),
             title="Moving Averages",
             xaxis_title="Index",
             yaxis_title="Value",
             xaxis=dict(showgrid=True, gridcolor='lightgrey'),
             yaxis=dict(showgrid=True, gridcolor='lightgrey'),
-            legend=dict(x=0, y=1)
+            legend=dict(x=0, y=1, orientation="h")
         )
-        st.plotly_chart(fig, use_container_width=True)
 
+        with st.container():
+            st.plotly_chart(fig, use_container_width=True)
 
 def plot_rsi(metrics):
     if "rsi" in metrics and isinstance(metrics["rsi"], list):
