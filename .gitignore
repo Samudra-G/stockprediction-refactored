@@ -14,12 +14,6 @@ __pycache__/
 # Docker (optional extra)
 *.pid
 
-# Model artifacts
-*.h5
-*.pkl
-*.keras
-*.ckpt
-
 # Jupyter Notebook checkpoints 
 .ipynb_checkpoints/
 
