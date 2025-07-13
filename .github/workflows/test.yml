@@ -33,5 +33,7 @@ jobs:
     - name: Run Go tests (Makefile)
       run: make test-backend
 
-    - name: Run Python tests (Makefile)
-      run: pytest ml_fastapi/test/
+    - name: Run Python tests (ml_fastapi)
+      working-directory: ./ml_fastapi
+      run: |
+        pytest test/
