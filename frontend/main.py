@@ -33,7 +33,7 @@ def main():
     plot_rsi(metrics)
     show_volatility(metrics)
     plot_macd(metrics)
-    plot_prediction_vs_actual()
+    plot_prediction_vs_actual(ticker)
 
 
 if __name__ == "__main__":

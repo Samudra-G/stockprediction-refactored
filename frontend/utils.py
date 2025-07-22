@@ -40,8 +40,8 @@ def send_metrics_to_go(df: pd.DataFrame, ticker: str) -> dict:
     else:
         return {"error": "Failed to get metrics from Go backend."}
 
-def poll_prediction_status() -> dict:
-    response = requests.get(f"{BACKEND_GO_URL}/poll")
+def poll_prediction_status(ticker: str) -> dict:
+    response = requests.get(f"{BACKEND_GO_URL}/poll?ticker={ticker}")
     if response.ok:
         return response.json()
     else:
