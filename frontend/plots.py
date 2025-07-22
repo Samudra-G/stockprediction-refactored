@@ -98,7 +98,7 @@ def plot_macd(metrics):
         st.plotly_chart(fig, use_container_width=True)
 
 
-def plot_prediction_vs_actual():
+def plot_prediction_vs_actual(ticker: str):
     st.subheader("📈 Prediction vs Actual")
 
     with st.spinner("Waiting for prediction to complete..."):
@@ -106,7 +106,7 @@ def plot_prediction_vs_actual():
         result = {}
 
         while status not in ["success", "failed"]:
-            result = utils.poll_prediction_status()
+            result = utils.poll_prediction_status(ticker)
             status = result.get("status", "")
             if status in ["success", "failed"]:
                 break
